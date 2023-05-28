@@ -119,7 +119,7 @@ public class UI {
         btn.setText(text);
         btn.addActionListener(appManager.actionHandler);
         btn.setActionCommand(command);
-        btn.setFont(new Font("Helvetica", Font.BOLD, 20));
+        btn.setFont(new Font("Helvetica", Font.PLAIN, 20));
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn.setForeground(Color.gray);
@@ -151,7 +151,7 @@ public class UI {
         button(1, 1100, 653, 200, 50, "Selanjutnya", null);
         noUrutTextField = createTextField(1, 600, 203, 500, 40, 40, 16);
         nikTextField = createTextField(1, 600, 303, 500, 40, 40, 16);
-        jenisKelaminDropdown = createDropdown(1, 600, 403, 500, 40, 40, new String[]{"Laki-laki", "Perempuan"});
+        jenisKelaminDropdown = createDropdown(1, 600, 403, 500, 40, 30, new String[]{"Laki-laki", "Perempuan"});
         // TextField = createTextField(0, 600, 403, 500, 40, 40, 16);
         umurTextField = createTextField(1, 600, 503, 500, 40, 40, 16);
         noUrutLabel = createLabel(1, 260, 203, 500, 40, "No Urut:", 40);
