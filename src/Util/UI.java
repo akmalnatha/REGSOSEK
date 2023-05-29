@@ -1,19 +1,24 @@
 package Util;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -124,23 +129,44 @@ public class UI {
     }
 
     public void button(int bgNum, int x, int y, int width, int height, String text, String command) {
-        JButton btn = new JButton();
+        JButton btn = new JButton(text) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                int arcSize = Math.min(width, height); 
+
+                Shape border = new RoundRectangle2D.Double(0, 0, width - 1, height - 1, arcSize, arcSize);
+                g2.setStroke(new BasicStroke(2));
+                g2.setColor(Color.WHITE);
+                g2.draw(border);
+
+                g2.setPaint(getBackground()); 
+                g2.fill(border);
+
+                g2.dispose();
+                super.paintComponent(g);
+            }
+        };
 
         btn.setBounds(x, y, width, height);
         btn.setText(text);
-        btn.addActionListener(appManager.actionHandler);
-        btn.setActionCommand(command);
         btn.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        btn.setForeground(Color.BLACK);
+        btn.setBackground(Color.WHITE);
+        btn.setFocusPainted(false);
+        btn.setBorderPainted(false);
+        btn.setOpaque(false);
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn.setForeground(Color.gray);
+                btn.setForeground(Color.GRAY);
             }
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn.setForeground(Color.black);
+                btn.setForeground(Color.BLACK);
             }
         });
-
         bgPanel[bgNum].add(btn, 0);
     }
 
@@ -153,13 +179,13 @@ public class UI {
         kabKotLabel = createLabel(0, 260, 303, 500, 40, "Kabupaten/Kota  :", 40);
         provinsiLabel = createLabel(0, 260, 403, 500, 40, "Kecamatan          :", 40);
         kabKotLabel = createLabel(0, 260, 503, 500, 40, "Desa/Kelurahan  :", 40);
-        button(0, 1000, 600, 200, 50, "> Selanjutnya", null);
+        button(0, 1000, 600, 200, 50, "Selanjutnya >", null);
 
         bgPanel[0].add(bgLabel[0]);
     }   
 
     public void inputField2(){
-        button(1, 1000, 600, 200, 50, "> Selanjutnya", null);
+        button(1, 1000, 600, 200, 50, "Selanjutnya >", null);
         noUrutTextField = createTextField(1, 600, 203, 500, 40, 40, 16);
         nikTextField = createTextField(1, 600, 303, 500, 40, 40, 16);
         jenisKelaminDropdown = createDropdown(1, 600, 403, 500, 40, 30, new String[]{"Laki-laki", "Perempuan"});
@@ -185,7 +211,7 @@ public class UI {
         urutKelLabel = createLabel(2, 260, 403, 500, 40, "No Urut Keluarga", 40);
         landmarkLabel = createLabel(2, 260, 503, 500, 40, "ID Landmark", 40);
 
-        button(2, 1000, 600, 200, 50, "> Selanjutnya", null);
+        button(2, 1000, 600, 200, 50, "Selanjutnya >", null);
         button(2, 200, 600, 200, 50, "< Kembali", null);
 
         bgPanel[2].add(bgLabel[2]);
@@ -203,7 +229,7 @@ public class UI {
         statKerjaLabel = createLabel(3, 240, 503, 500, 40, "Status Bekerja", 30);
         addKerjaLabel = createLabel(3, 240, 550, 500, 40, "*dalam seminggu terakhir", 18);
 
-        button(3, 1000, 600, 200, 50, "> Selanjutnya", null);
+        button(3, 1000, 600, 200, 50, "Selanjutnya >", null);
         button(3, 200, 600, 200, 50, "< Kembali", null);
 
         bgPanel[3].add(bgLabel[3]);
@@ -220,7 +246,7 @@ public class UI {
         statKedAddLabel = createLabel(4, 240, 350, 500, 40, "*dalam pekerjaan utama", 18);
         statMilikLabel = createLabel(4, 240, 403, 500, 40, "Status Kepemilikan Usaha", 30);
         
-        button(4, 1000, 600, 200, 50, "> Selanjutnya", null);
+        button(4, 1000, 600, 200, 50, "Selanjutnya >", null);
         button(4, 200, 600, 200, 50, "< Kembali", null);
 
         bgPanel[4].add(bgLabel[4]);
