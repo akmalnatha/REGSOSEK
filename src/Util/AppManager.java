@@ -15,6 +15,6 @@ public class AppManager {
     ActionHandler actionHandler = new ActionHandler(this);
 
     public AppManager(){
-        routing.showScreen(4);
+        routing.showScreen(1);
     }
 }

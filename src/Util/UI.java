@@ -107,11 +107,28 @@ public class UI {
     }
 
     public JTextField createTextField(int bgNum, int x, int y, int width, int height, int size, int column){
-        JTextField newTextField = new JTextField(column);
+        JTextField newTextField = new JTextField(column) {
+            protected void paintComponent(Graphics g) {
+                Graphics2D g2 = (Graphics2D) g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                RoundRectangle2D roundedRect = new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, height, height);
+                g2.setColor(Color.WHITE);
+                g2.draw(roundedRect);
+                
+                g2.setPaint(getBackground());
+                g2.fill(roundedRect);
+
+                g2.dispose();
+                super.paintComponent(g);
+            }
+        };
+
         newTextField.setBounds(x, y, width, height);
-        newTextField.setFont(new Font(newTextField.getFont().getName(),newTextField.getFont().getStyle(),size));
-        LineBorder lineBorder =new LineBorder(Color.white, 50, true);
-        newTextField.setBorder(lineBorder);
+        newTextField.setFont(new Font(newTextField.getFont().getName(), newTextField.getFont().getStyle(), size));
+        newTextField.setBorder(BorderFactory.createEmptyBorder());
+        newTextField.setOpaque(false);
+        newTextField.setBackground(Color.WHITE);
 
         bgPanel[bgNum].add(newTextField);
 
@@ -130,7 +147,6 @@ public class UI {
 
     public void button(int bgNum, int x, int y, int width, int height, String text, String command) {
         JButton btn = new JButton(text) {
-            @Override
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -175,10 +191,10 @@ public class UI {
         kabKotTextField = createTextField(0, 600, 303, 500, 40, 40, 16);
         kecamatanTextField = createTextField(0, 600, 403, 500, 40, 40, 16);
         desaKelTextField = createTextField(0, 600, 503, 500, 40, 40, 16);
-        provinsiLabel = createLabel(0, 260, 203, 500, 40, "Provinsi               :", 40);
-        kabKotLabel = createLabel(0, 260, 303, 500, 40, "Kabupaten/Kota  :", 40);
-        provinsiLabel = createLabel(0, 260, 403, 500, 40, "Kecamatan          :", 40);
-        kabKotLabel = createLabel(0, 260, 503, 500, 40, "Desa/Kelurahan  :", 40);
+        provinsiLabel = createLabel(0, 260, 203, 500, 40, "Provinsi", 40);
+        kabKotLabel = createLabel(0, 260, 303, 500, 40, "Kabupaten/Kota", 40);
+        provinsiLabel = createLabel(0, 260, 403, 500, 40, "Kecamatan", 40);
+        kabKotLabel = createLabel(0, 260, 503, 500, 40, "Desa/Kelurahan", 40);
         button(0, 1000, 600, 200, 50, "Selanjutnya >", null);
 
         bgPanel[0].add(bgLabel[0]);
@@ -191,10 +207,10 @@ public class UI {
         jenisKelaminDropdown = createDropdown(1, 600, 403, 500, 40, 30, new String[]{"Laki-laki", "Perempuan"});
         // TextField = createTextField(0, 600, 403, 500, 40, 40, 16);
         umurTextField = createTextField(1, 600, 503, 500, 40, 40, 16);
-        noUrutLabel = createLabel(1, 260, 203, 500, 40, "No Urut:", 40);
-        nikLabel = createLabel(1, 260, 303, 500, 40, "NIK:", 40);
-        jenisKelaminLabel = createLabel(1, 260, 403, 500, 40, "Jenis Kelamin:", 40);
-        umurLabel = createLabel(1, 260, 503, 500, 40, "Umur:", 40);
+        noUrutLabel = createLabel(1, 260, 203, 500, 40, "No Urut", 40);
+        nikLabel = createLabel(1, 260, 303, 500, 40, "NIK", 40);
+        jenisKelaminLabel = createLabel(1, 260, 403, 500, 40, "Jenis Kelamin", 40);
+        umurLabel = createLabel(1, 260, 503, 500, 40, "Umur", 40);
         button(1, 200, 600, 200, 50, "< Kembali", null);
 
         bgPanel[1].add(bgLabel[1]);
