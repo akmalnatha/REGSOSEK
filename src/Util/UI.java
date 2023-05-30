@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -145,7 +146,7 @@ public class UI {
         return newDropdown;
     }
 
-    public void button(int bgNum, int x, int y, int width, int height, String text, String command) {
+    public void button(int bgNum, int x, int y, int width, int height, String text, String command, ActionListener ac) {
         JButton btn = new JButton(text) {
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
@@ -172,6 +173,8 @@ public class UI {
         btn.setForeground(Color.BLACK);
         btn.setBackground(Color.WHITE);
         btn.setFocusPainted(false);
+        btn.addActionListener(appManager.actionHandler);
+        btn.setActionCommand(command);
         btn.setBorderPainted(false);
         btn.setOpaque(false);
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,13 +198,13 @@ public class UI {
         kabKotLabel = createLabel(0, 260, 303, 500, 40, "Kabupaten/Kota", 40);
         provinsiLabel = createLabel(0, 260, 403, 500, 40, "Kecamatan", 40);
         kabKotLabel = createLabel(0, 260, 503, 500, 40, "Desa/Kelurahan", 40);
-        button(0, 1000, 600, 200, 50, "Selanjutnya >", null);
+        button(0, 1000, 600, 200, 50, "Selanjutnya >", "page-2", appManager.actionHandler);
 
         bgPanel[0].add(bgLabel[0]);
     }   
 
     public void inputField2(){
-        button(1, 1000, 600, 200, 50, "Selanjutnya >", null);
+        button(1, 1000, 600, 200, 50, "Selanjutnya >", "page-3", appManager.actionHandler);
         noUrutTextField = createTextField(1, 600, 203, 500, 40, 40, 16);
         nikTextField = createTextField(1, 600, 303, 500, 40, 40, 16);
         jenisKelaminDropdown = createDropdown(1, 600, 403, 500, 40, 30, new String[]{"Laki-laki", "Perempuan"});
@@ -211,7 +214,7 @@ public class UI {
         nikLabel = createLabel(1, 260, 303, 500, 40, "NIK", 40);
         jenisKelaminLabel = createLabel(1, 260, 403, 500, 40, "Jenis Kelamin", 40);
         umurLabel = createLabel(1, 260, 503, 500, 40, "Umur", 40);
-        button(1, 200, 600, 200, 50, "< Kembali", null);
+        button(1, 200, 600, 200, 50, "< Kembali", "page-1", appManager.actionHandler);
 
         bgPanel[1].add(bgLabel[1]);
     } 
@@ -227,8 +230,8 @@ public class UI {
         urutKelLabel = createLabel(2, 260, 403, 500, 40, "No Urut Keluarga", 40);
         landmarkLabel = createLabel(2, 260, 503, 500, 40, "ID Landmark", 40);
 
-        button(2, 1000, 600, 200, 50, "Selanjutnya >", null);
-        button(2, 200, 600, 200, 50, "< Kembali", null);
+        button(2, 1000, 600, 200, 50, "Selanjutnya >", null, appManager.actionHandler);
+        button(2, 200, 600, 200, 50, "< Kembali", null, appManager.actionHandler);
 
         bgPanel[2].add(bgLabel[2]);
     } 
@@ -245,8 +248,8 @@ public class UI {
         statKerjaLabel = createLabel(3, 240, 503, 500, 40, "Status Bekerja", 30);
         addKerjaLabel = createLabel(3, 240, 550, 500, 40, "*dalam seminggu terakhir", 18);
 
-        button(3, 1000, 600, 200, 50, "Selanjutnya >", null);
-        button(3, 200, 600, 200, 50, "< Kembali", null);
+        button(3, 1000, 600, 200, 50, "Selanjutnya >", null, appManager.actionHandler);
+        button(3, 200, 600, 200, 50, "< Kembali", null, appManager.actionHandler);
 
         bgPanel[3].add(bgLabel[3]);
     }
@@ -262,8 +265,8 @@ public class UI {
         statKedAddLabel = createLabel(4, 240, 350, 500, 40, "*dalam pekerjaan utama", 18);
         statMilikLabel = createLabel(4, 240, 403, 500, 40, "Status Kepemilikan Usaha", 30);
         
-        button(4, 1000, 600, 200, 50, "Selanjutnya >", null);
-        button(4, 200, 600, 200, 50, "< Kembali", null);
+        button(4, 1000, 600, 200, 50, "Selanjutnya >", null, appManager.actionHandler);
+        button(4, 200, 600, 200, 50, "< Kembali", null, appManager.actionHandler);
 
         bgPanel[4].add(bgLabel[4]);
     }
@@ -276,7 +279,7 @@ public class UI {
         lUsahaLabel = createLabel(5, 200, 303, 500, 40, "Lapangan Usaha", 30);
         lUsahaAddLabel = createLabel(5, 200, 350, 500, 40, "*dari usaha utama", 18);
         
-        button(5, 1000, 600, 200, 50, "Selesai", null);
+        button(5, 1000, 600, 200, 50, "Selesai", null, appManager.actionHandler);
 
         bgPanel[5].add(bgLabel[5]);
     }

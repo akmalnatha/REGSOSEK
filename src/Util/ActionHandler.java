@@ -16,7 +16,9 @@ public class ActionHandler implements ActionListener{
         String command = e.getActionCommand();
 
         switch (command){
-            
+            case "page-2":
+                appManager.routing.showScreen(1);
+                // appManager.ui.bgPanel[0].setVisible(false);
         }
     }
     
