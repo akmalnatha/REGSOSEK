@@ -52,12 +52,12 @@ public class UI {
         this.appManager = appManager;
         createMainField();
         generateScreen();
-        inputField1();
-        inputField2();
-        inputField3();
-        inputField4();
-        inputField5();
-        inputField6();
+        // inputField1();
+        // inputField2();
+        // inputField3();
+        // inputField4();
+        // inputField5();
+        // inputField6();
         window.setVisible(true);
     }
 
@@ -83,17 +83,23 @@ public class UI {
         ImageIcon bgIcon = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(bgPath)).getImage()
                 .getScaledInstance(1920*3/4, 1080*3/4, Image.SCALE_SMOOTH));
         bgLabel[bgNum].setIcon(bgIcon);
-        // bgPanel[bgNum].add(bgLabel[bgNum], -1);
+        // bgPanel[bgNum].setVisible(false);
     }
 
     public void generateScreen() {
         // Start
-        createBackgroundFull(0, "./background/bg.png");
-        createBackgroundFull(1, "./background/bg.png");
-        createBackgroundFull(2, "./background/bg.png");
-        createBackgroundFull(3, "./background/bg.png");
-        createBackgroundFull(4, "./background/bg.png");
-        createBackgroundFull(5, "./background/bg.png");
+        // createBackgroundFull(0, "./background/bg.png");
+        // createBackgroundFull(1, "./background/bg.png");
+        // createBackgroundFull(2, "./background/bg.png");
+        // createBackgroundFull(3, "./background/bg.png");
+        // createBackgroundFull(4, "./background/bg.png");
+        // createBackgroundFull(5, "./background/bg.png");
+        inputField1();
+        inputField2();
+        inputField3();
+        inputField4();
+        inputField5();
+        inputField6();
     }
 
     public JLabel createLabel(int bgNum, int x, int y, int width, int height, String text, int size){
@@ -146,7 +152,7 @@ public class UI {
         return newDropdown;
     }
 
-    public void button(int bgNum, int x, int y, int width, int height, String text, String command, ActionListener ac) {
+    public void button(int bgNum, int x, int y, int width, int height, String text, String command) {
         JButton btn = new JButton(text) {
             protected void paintComponent(Graphics g) {
                 Graphics2D g2 = (Graphics2D) g.create();
@@ -190,6 +196,7 @@ public class UI {
     }
 
     public void inputField1(){
+        createBackgroundFull(0, "./background/bg.png");
         provinsiTextField = createTextField(0, 600, 203, 500, 40, 40, 16);
         kabKotTextField = createTextField(0, 600, 303, 500, 40, 40, 16);
         kecamatanTextField = createTextField(0, 600, 403, 500, 40, 40, 16);
@@ -198,13 +205,15 @@ public class UI {
         kabKotLabel = createLabel(0, 260, 303, 500, 40, "Kabupaten/Kota", 40);
         provinsiLabel = createLabel(0, 260, 403, 500, 40, "Kecamatan", 40);
         kabKotLabel = createLabel(0, 260, 503, 500, 40, "Desa/Kelurahan", 40);
-        button(0, 1000, 600, 200, 50, "Selanjutnya >", "page-2", appManager.actionHandler);
+        button(0, 1000, 600, 200, 50, "Selanjutnya >", "page-2");
 
         bgPanel[0].add(bgLabel[0]);
+        bgPanel[0].setVisible(false);
     }   
-
+    
     public void inputField2(){
-        button(1, 1000, 600, 200, 50, "Selanjutnya >", "page-3", appManager.actionHandler);
+        createBackgroundFull(1, "./background/bg.png");
+        button(1, 1000, 600, 200, 50, "Selanjutnya >", "page-3");
         noUrutTextField = createTextField(1, 600, 203, 500, 40, 40, 16);
         nikTextField = createTextField(1, 600, 303, 500, 40, 40, 16);
         jenisKelaminDropdown = createDropdown(1, 600, 403, 500, 40, 30, new String[]{"Laki-laki", "Perempuan"});
@@ -214,12 +223,14 @@ public class UI {
         nikLabel = createLabel(1, 260, 303, 500, 40, "NIK", 40);
         jenisKelaminLabel = createLabel(1, 260, 403, 500, 40, "Jenis Kelamin", 40);
         umurLabel = createLabel(1, 260, 503, 500, 40, "Umur", 40);
-        button(1, 200, 600, 200, 50, "< Kembali", "page-1", appManager.actionHandler);
-
+        button(1, 200, 600, 200, 50, "< Kembali", "page-1");
+        
         bgPanel[1].add(bgLabel[1]);
+        bgPanel[1].setVisible(false);
     } 
-
+    
     public void inputField3(){
+        createBackgroundFull(2, "./background/bg.png");
         jwilayahTextDropdown = createDropdown(2, 600, 203, 500, 40, 40, new String[]{"tes","doang"});
         urutBangunanTextField = createTextField(2, 600, 303, 500, 40, 40, 16);
         urutKelTextField = createTextField(2, 600, 403, 500, 40, 40, 16);
@@ -229,32 +240,36 @@ public class UI {
         urutBangunanLabel = createLabel(2, 260, 303, 500, 40, "No Urut Bangunan", 40);
         urutKelLabel = createLabel(2, 260, 403, 500, 40, "No Urut Keluarga", 40);
         landmarkLabel = createLabel(2, 260, 503, 500, 40, "ID Landmark", 40);
-
-        button(2, 1000, 600, 200, 50, "Selanjutnya >", null, appManager.actionHandler);
-        button(2, 200, 600, 200, 50, "< Kembali", null, appManager.actionHandler);
-
+        
+        button(2, 1000, 600, 200, 50, "Selanjutnya >", "page-4");
+        button(2, 200, 600, 200, 50, "< Kembali", "page-2");
+        
         bgPanel[2].add(bgLabel[2]);
+        bgPanel[2].setVisible(false);
     } 
     
     public void inputField4(){
+        createBackgroundFull(3, "./background/bg.png");
         gKesulitanDropdown = createDropdown(3, 600, 203, 500, 40, 30, new String[]{"Ya","Tidak"});
         jGangguanDropdown = createDropdown(3, 600, 303, 500, 40, 30, new String[]{"Ya","Tidak"});
         ijazahDropdown = createDropdown(3, 600, 403, 500, 40, 30, new String[]{"Ya","Tidak"});
         statKerjaDropdown = createDropdown(3, 600, 503, 500, 40, 30, new String[]{"Ya","Tidak"});
-
+        
         gKesulitanLabel = createLabel(3, 240, 203, 500, 40, "Gangguan Kesulitan", 30);
         jGangguanLabel = createLabel(3, 240, 303, 500, 40, "Jenis Gangguan", 30);
         ijazahLabel = createLabel(3, 240, 403, 500, 40, "Ijazah Terakhir", 30);
         statKerjaLabel = createLabel(3, 240, 503, 500, 40, "Status Bekerja", 30);
         addKerjaLabel = createLabel(3, 240, 550, 500, 40, "*dalam seminggu terakhir", 18);
-
-        button(3, 1000, 600, 200, 50, "Selanjutnya >", null, appManager.actionHandler);
-        button(3, 200, 600, 200, 50, "< Kembali", null, appManager.actionHandler);
-
+        
+        button(3, 1000, 600, 200, 50, "Selanjutnya >", "page-5");
+        button(3, 200, 600, 200, 50, "< Kembali", "page-3");
+        
         bgPanel[3].add(bgLabel[3]);
+        bgPanel[3].setVisible(false);
     }
-
+    
     public void inputField5(){
+        createBackgroundFull(4, "./background/bg.png");
         jLapanganDropdown = createDropdown(4, 600, 203, 500, 40, 30, new String[]{"Ya","Tidak"});
         statKedDropdown = createDropdown(4, 600, 303, 500, 40, 30, new String[]{"Ya","Tidak"});
         statMilikDropdown = createDropdown(4, 600, 403, 500, 40, 30, new String[]{"Ya","Tidak"});
@@ -265,13 +280,15 @@ public class UI {
         statKedAddLabel = createLabel(4, 240, 350, 500, 40, "*dalam pekerjaan utama", 18);
         statMilikLabel = createLabel(4, 240, 403, 500, 40, "Status Kepemilikan Usaha", 30);
         
-        button(4, 1000, 600, 200, 50, "Selanjutnya >", null, appManager.actionHandler);
-        button(4, 200, 600, 200, 50, "< Kembali", null, appManager.actionHandler);
-
+        button(4, 1000, 600, 200, 50, "Selanjutnya >", "page-6");
+        button(4, 200, 600, 200, 50, "< Kembali", "page-4");
+        
         bgPanel[4].add(bgLabel[4]);
+        bgPanel[4].setVisible(false);
     }
-
+    
     public void inputField6(){
+        createBackgroundFull(5, "./background/bg.png");
         jUsahaDropdown = createDropdown(5, 600, 203, 500, 40, 30, new String[]{"Ya","Tidak"});
         lUsahaDropdown = createDropdown(5, 600, 303, 500, 40, 30, new String[]{"Ya","Tidak"});
         
@@ -279,11 +296,9 @@ public class UI {
         lUsahaLabel = createLabel(5, 200, 303, 500, 40, "Lapangan Usaha", 30);
         lUsahaAddLabel = createLabel(5, 200, 350, 500, 40, "*dari usaha utama", 18);
         
-        button(5, 1000, 600, 200, 50, "Selesai", null, appManager.actionHandler);
+        button(5, 1000, 600, 200, 50, "Selesai", null);
 
         bgPanel[5].add(bgLabel[5]);
+        bgPanel[5].setVisible(false);
     }
-    // public static void main(String[] args) {
-        
-    // }
 }
