@@ -10,9 +10,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class AppManager {
-    Routing routing = new Routing(this);
-    UI ui = new UI(this);
     ActionHandler actionHandler = new ActionHandler(this);
+    UI ui = new UI(this);
+    Routing routing = new Routing(this);
 
     public AppManager(){
         routing.showScreen(0);

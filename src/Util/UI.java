@@ -5,20 +5,20 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.awt.Insets;
+// import java.awt.event.ActionListener;
+// import java.awt.event.MouseEvent;
+// import java.awt.event.MouseListener;
+// import java.awt.image.BufferedImage;
+// import java.util.ArrayList;
+// import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.util.List;
-import java.util.stream.Collectors;
+// import java.util.List;
+// import java.util.stream.Collectors;
 import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.geom.AffineTransform;
+// import java.awt.GridBagConstraints;
+// import java.awt.GridBagLayout;
+// import java.awt.geom.AffineTransform;
 import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.BorderFactory;
@@ -27,15 +27,15 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+// import javax.swing.JMenuItem;
+// import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
+// import javax.swing.JPopupMenu;
+// import javax.swing.JScrollPane;
+// import javax.swing.JTable;
+// import javax.swing.JTextArea;
+// import javax.swing.SwingUtilities;
+// import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 
 public class UI {
@@ -208,7 +208,7 @@ public class UI {
         button(0, 1000, 600, 200, 50, "Selanjutnya >", "page-2");
 
         bgPanel[0].add(bgLabel[0]);
-        bgPanel[0].setVisible(false);
+        bgPanel[0].setVisible(true);
     }   
     
     public void inputField2(){
