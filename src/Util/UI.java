@@ -142,6 +142,20 @@ public class UI {
         return newTextField;
     }
 
+    public void clearField() {
+        appManager.ui.provinsiTextField.setText(null); 
+        appManager.ui.kabKotTextField.setText(null);
+        appManager.ui.kecamatanTextField.setText(null);
+        appManager.ui.desaKelTextField.setText(null);
+        appManager.ui.noUrutTextField.setText(null);
+        appManager.ui.nikTextField.setText(null);
+        appManager.ui.nikTextField.setText(null);       
+        appManager.ui.umurTextField.setText(null);
+        appManager.ui.urutBangunanTextField.setText(null);
+        appManager.ui.urutKelTextField.setText(null);
+        appManager.ui.landmarkTextField.setText(null);
+    }
+
     public JComboBox<String> createDropdown(int bgNum, int x, int y, int width, int height, int size, String[] isi){
         JComboBox<String> newDropdown = new JComboBox<String>(isi);
         newDropdown.setBounds(x, y, width, height);
@@ -285,6 +299,7 @@ public class UI {
         
         bgPanel[4].add(bgLabel[4]);
         bgPanel[4].setVisible(false);
+        // kontol
     }
     
     public void inputField6(){
@@ -297,7 +312,7 @@ public class UI {
         lUsahaAddLabel = createLabel(5, 200, 350, 500, 40, "*dari usaha utama", 18);
         
         button(5, 200, 600, 200, 50, "< Kembali", "page-5");
-        button(5, 1000, 600, 200, 50, "Selesai", "page-1");
+        button(5, 1000, 600, 200, 50, "Selesai", "selesai");
 
         bgPanel[5].add(bgLabel[5]);
         bgPanel[5].setVisible(false);
